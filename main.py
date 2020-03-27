@@ -47,7 +47,6 @@ def parse(expr):
     is_quantifier = False
 
     for index, char in enumerate(expr):
-        print(char)
         if is_quantifier:
             tmp += char
             if expr[index + 1] != '+':
@@ -86,7 +85,7 @@ def parse(expr):
     return regex
 
 
-expression = '0++ w 1++ w 0+ w'
+expression = ''
 text = 'Call 1.800-555-1212 for info'
 
 data = parse(expression)
