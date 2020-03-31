@@ -77,7 +77,7 @@ def parse(expr):
                 tmp = ''
             else:
                 tmp += char
-        elif char != ' ':
+        elif char not in [' ', '\n', '\t']:
             if char == '"':
                 is_exact = True
             elif char == '!' and expr[index - 1] != '[':
@@ -99,7 +99,22 @@ def parse(expr):
     return regex
 
 
-expression = '[A-z A-Z 0-9]w0++w'
+expression = '''
+{
+    [
+        w
+        "._-"
+    ]1++
+}
+"@"
+{
+    [
+        w
+        "."
+        w
+    ]1++ 
+}
+'''
 text = 'Call 1.800-555-1212 for info'
 
 data = parse(expression)

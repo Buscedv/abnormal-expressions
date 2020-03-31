@@ -1,7 +1,42 @@
 # Abnormal expressions
 Abnormal expressions (abnex) is an alternative to regular expressions (regex).
 
-# Translations
+# Examples
+## Matching an email address
+### Regex
+- `([\w\._-]+)@([\w\.\w]+)`
+### Abnex
+- `{[w"._-"]1++}"@"{[w"."w]1++}`
+### Abnex (spaced)
+- `{ [w "._-"]1++ } "@" { [w "." w]1++ }`
+### Abnex (expanded)
+- `
+{
+    [
+        w
+        "._-"
+    ]1++
+}
+"@"
+{
+    [
+        w
+        "."
+        w
+    ]1++
+}
+`
+
+# Why is Abnex Better?
+- It's easier to read, write and understand.
+- You can use spaces inside of the expression, you can also "expand" it, i.e. write it over multiple lines and use indention.
+- You don't have to use a backslashes all the time
+- More logical/common symbols like `!` for _not_, `{}` for _groups_, `1++`, `0++`, `0+` for: _one or more_, _zero or more_, _zero or one_.
+- It's easier to see if a symbol is an actual symbol you are searching for or if it's a regex character, ex:
+  - Regex: `[\w-]+@[\w-_]+`
+  - Abnex: `[w "-"]1++ "@" [w "-"]1++`
+
+# Documentation
 ### Regex on right after -> is the abnex equivalent
 ## Anchors
 - Start of string, or start of line in multi-line pattern
