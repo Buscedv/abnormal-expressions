@@ -1,8 +1,8 @@
-# edvard expressions
-Dvard expressions is an alternative to regular expressions.
+# Abnormal expressions
+Abnormal expressions (abnex) is an alternative to regular expressions (regex).
 
 # Translations
-### Regex on right after -> is the edvard expressions equivalent
+### Regex on right after -> is the abnex equivalent
 ## Anchors
 - Start of string, or start of line in multi-line pattern
   - `^` -> `->`
