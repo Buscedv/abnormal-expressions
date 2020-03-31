@@ -20,13 +20,20 @@ def get_chars():
         '*': '.',
         'w': '\\w',
         '_': '\\s',
-        'b': '\\b',
+        ':': '\\b',
         '->': '^',
         '<-': '$',
+        's>': '\\A',
+        '<s': '\\Z',
+        'w>': '\\<',
+        '<w': '\\>',
         '!': '^',
         '0++': '*',
         '1++': '+',
-        '0+': '?'
+        '0+': '?',
+        'c': '\\c',
+        'x': '\\x',
+        'o': '\\o',
     }
 
 
@@ -49,7 +56,14 @@ def parse(expr):
     for index, char in enumerate(expr):
         if is_quantifier:
             tmp += char
-            if expr[index + 1] != '+':
+            try:
+                if expr[index + 1] != '+':
+                    check = True
+                else:
+                    check = False
+            except IndexError:
+                check = True
+            if check:
                 regex += transpile(tmp, is_not)
                 tmp = ''
                 is_quantifier = False
@@ -74,7 +88,7 @@ def parse(expr):
             else:
                 if index < len(expr)-1:
                     next_up = expr[index + 1]
-                    if char == '-' and next_up == '>' or char == '<' and next_up == '-':
+                    if char in ['-', 's', 'w'] and next_up == '>' or char == '<' and next_up in ['-', 's', 'w']:
                         is_skip = True
                         regex += transpile(char + next_up, is_not)
                     else:
@@ -85,7 +99,7 @@ def parse(expr):
     return regex
 
 
-expression = ''
+expression = '[A-z A-Z 0-9]w0++w'
 text = 'Call 1.800-555-1212 for info'
 
 data = parse(expression)

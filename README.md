@@ -5,21 +5,21 @@ Dvard expressions is an alternative to regular expressions.
 ### Regex on right after -> is the edvard expressions equivalent
 ## Anchors
 - Start of string, or start of line in multi-line pattern
-  - `^` -> `-sm>`
+  - `^` -> `->`
 - End of string, or end of line in multi-line pattern
-  - `$` -> `<sm-`
+  - `$` -> `<-`
 - Start of string
-  - `\A` -> `-s>`
+  - `\A` -> `s>`
 - End of string
-  - `\Z` -> `<s-`
+  - `\Z` -> `<s`
 - Word boundary
   - `\b` -> `:`
 - Not word boundary
   - `\B` -> `!:`
 - Start of word
-  - `\<` -> `-c>`
+  - `\<` -> `w>`
 - End of word
-  - `\>` -> `<c-`
+  - `\>` -> `<w`
 
 ## Character Classes
 - Control character
@@ -33,9 +33,9 @@ Dvard expressions is an alternative to regular expressions.
 - Not digit
   - `\D` -> `!d`
 - Word
-  - `\w` -> `c`
+  - `\w` -> `w`
 - Not word
-  - `\W` -> `!c`
+  - `\W` -> `!w`
 - Hexade­cimal digit
   - `\x` -> `x`
 - Octal digit
