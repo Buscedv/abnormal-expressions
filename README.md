@@ -3,29 +3,29 @@ Abnormal expressions (abnex) is an alternative to regular expressions (regex).
 
 # Examples
 ## Matching an email address
-### Regex
-- `([\w\._-]+)@([\w\.\w]+)`
-### Abnex
-- `{[w"._-"]1++}"@"{[w"."w]1++}`
-### Abnex (spaced)
-- `{ [w "._-"]1++ } "@" { [w "." w]1++ }`
-### Abnex (expanded)
-- `
-{
-    [
-        w
-        "._-"
-    ]1++
-}
-"@"
-{
-    [
-        w
-        "."
-        w
-    ]1++
-}
-`
+- Regex
+  - `([\w\._-]+)@([\w\.]+)`
+- Abnex
+  - `{[w"._-"]1++}"@"{[w"."]1++}`
+- Abnex (spaced)
+  - `{[w "._-"]1++} "@" {[w "."]1++}`
+
+- Abnex (expanded)
+  ```
+  {
+      [
+          w
+          "._-"
+      ]1++
+  }
+  "@"
+  {
+      [
+          w
+          "."
+      ]1++
+  }
+  ```
 
 # Why is Abnex Better?
 - It's easier to read, write and understand.
@@ -104,3 +104,24 @@ Abnormal expressions (abnex) is an alternative to regular expressions (regex).
 - Digit from 0 to 7
   - `[0-7]` -> `['0-7']`
 
+# Standards
+What is the recommended way to write abnexes
+
+- Use spaces between characters in character sets:
+  - Correct: `[w "_-"]`
+  - Incorrect: `[w"_-"]`
+- Put multiple exact characters between the same quotes in character sets:
+  - Correct: `["abc"]`
+  - Incorrect: `["a" "b" "c"]`, especially incorrect: `["a""b""c"]`
+- Put spaces between groups:
+  - Correct: `{w} "." {w}`
+  - Incorrect: `{w}"."{w}`
+
+### Examples:
+Match for an email address:
+- Regex:
+  - `[\w-\._]+@[\w-\.]+`
+- Abnex (following standards):
+  - `{[w "-._"]1++} "@" {[w "-."]1++}`
+- Abnex (not following standards):
+  - `{[w"-._"]1++}"@"{[w"-."]1++}`
