@@ -125,3 +125,19 @@ Match for an email address:
   - `{[w "-._"]1++} "@" {[w "-."]1++}`
 - Abnex (not following standards):
   - `{[w"-._"]1++}"@"{[w"-."]1++}`
+  
+# Functions
+__Abnex has most functions from the `re` library, but it also has som extra functionality like: `last()` & `contains()`.__
+
+## Common functions between re and abnex
+### Regex on right after -> is the abnex equivalent
+- `match()` -> `match()`
+- `findall()` -> `all()`
+- `split()` -> `split()`
+- `sub()` -> `replace()`
+- `subn()` -> `replace_count()`
+- `search()` -> `first()`
+## Special to abnex
+- `holds()`: whether or not a string matches an expression (bool).
+- `contains()`: wheter or not a string contains a match (bool).
+- `last()`: the last match in a string.
