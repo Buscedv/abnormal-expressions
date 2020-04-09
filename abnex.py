@@ -1,3 +1,51 @@
+import re
+
+
+def match(abnex_str, to_match):
+    regex = parse(abnex_str)
+    return re.match(regex, to_match)
+
+
+def holds(abnex_str, to_match):
+    return True if match(abnex_str, to_match) else False
+
+
+def contains(abnex_str, to_match):
+    return True if all(abnex_str, to_match) else False
+
+
+def all(abnex_str, to_match):
+    regex = parse(abnex_str)
+    return re.findall(regex, to_match)
+
+
+def split(abnex_str, to_match, max_split=0):
+    regex = parse(abnex_str)
+    if max_split:
+        return re.match(regex, to_match, max_split)
+    return re.match(regex, to_match)
+
+
+def replace(abnex_str, to_match, replacement, count=0):
+    regex = parse(abnex_str)
+    return re.sub(regex, replacement, to_match, count)
+
+
+def replace_count(abnex_str, to_match, replacement):
+    regex = parse(abnex_str)
+    return re.subn(regex, replacement, to_match)
+
+
+def first(abnex_str, to_match):
+    regex = parse(abnex_str)
+    return re.search(regex, to_match)
+
+
+def last(abnex_str, to_match):
+    regex = parse(abnex_str)
+    return re.findall(regex, to_match)[-1]
+
+
 def escape(txt):
     escaped = ''
 
@@ -97,12 +145,3 @@ def parse(expr):
                     regex += transpile(char, is_not)
 
     return regex
-
-
-expression = '''
-{[w"._-"]1++}"@"{[w"."w]1++ }
-'''
-text = 'Call 1.800-555-1212 for info'
-
-data = parse(expression)
-print(data)
