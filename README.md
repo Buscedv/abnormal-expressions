@@ -1,5 +1,6 @@
 # Abnormal expressions
 Abnormal expressions (abnex) is an alternative to regular expressions (regex).
+This is a Python library but the abnex syntax could be ported to other languages.
 
 # Examples
 ## Matching an email address
@@ -126,7 +127,7 @@ Match for an email address:
 - Abnex (not following standards):
   - `{[w"-._"]1++}"@"{[w"-."]1++}`
   
-# Functions
+# Functions (In Python)
 __Abnex has most functions from the `re` library, but it also has som extra functionality like: `last()` & `contains()`.__
 
 ## Common functions between re and abnex
