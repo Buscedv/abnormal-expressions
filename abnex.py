@@ -22,8 +22,8 @@ def all(abnex_str, to_match):
 def split(abnex_str, to_match, max_split=0):
     regex = parse(abnex_str)
     if max_split:
-        return re.match(regex, to_match, max_split)
-    return re.match(regex, to_match)
+        return re.split(regex, to_match, max_split)
+    return re.split(regex, to_match)
 
 
 def replace(abnex_str, to_match, replacement, count=0):
@@ -145,3 +145,7 @@ def parse(expr):
                     regex += transpile(char, is_not)
 
     return regex
+
+expr = '[*](32) [d](3) [*](12)'
+
+print (parse(expr))
