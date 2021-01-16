@@ -1,5 +1,6 @@
 import abnex
 
-expr = r'd(3)'
+expr = r'{[w"._-"]1++}"@"{[w"."]1++}'
 
-print(abnex.last(expr, '000 a 130'))
+text = 'lorem ipsum dolor name@example.com lorem ipsum.lorem'
+print(abnex.contains(expr, text))

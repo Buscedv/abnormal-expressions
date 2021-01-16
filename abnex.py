@@ -7,11 +7,11 @@ def match(abnex_str, to_match):
 
 
 def holds(abnex_str, to_match):
-    return True if match(abnex_str, to_match) else False
+    return bool(match(abnex_str, to_match))
 
 
 def contains(abnex_str, to_match):
-    return True if all(abnex_str, to_match) else False
+    return bool(all(abnex_str, to_match))
 
 
 def all(abnex_str, to_match):
@@ -105,12 +105,10 @@ def parse(expr):
         if is_quantifier:
             tmp += char
             try:
-                if expr[index + 1] != '+':
-                    check = True
-                else:
-                    check = False
+                check = expr[index + 1] != '+'
             except IndexError:
                 check = True
+
             if check:
                 regex += transpile(tmp, is_not)
                 tmp = ''
@@ -145,7 +143,3 @@ def parse(expr):
                     regex += transpile(char, is_not)
 
     return regex
-
-expr = '[*](32) [d](3) [*](12)'
-
-print (parse(expr))
