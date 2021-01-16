@@ -14,17 +14,11 @@ This is a Python library but the abnex syntax could be ported to other languages
 - Abnex (expanded)
   ```
   {
-      [
-          w
-          "._-"
-      ]1++
+    [w "._-"]1++
   }
   "@"
   {
-      [
-          w
-          "."
-      ]1++
+    [w "."]1++
   }
   ```
 
