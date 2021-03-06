@@ -92,12 +92,12 @@ This is a Python library but the abnex syntax could be ported to other languages
   - `[abc]` -> `['abc']` or `["a" "b" "c"]`
 - Not in set
   - `[^...]` -> `[!...]`
-- Lower case letter from a to q
-  - `[a-q]` -> `['a-q']`
+- Lower case letter from a to Z
+  - `[a-q]` -> `[a-z]`
 - Upper case letter from A to Q
-  - `[A-Q]` -> `['A-Q']`
+  - `[A-Q]` -> `[A-Q]`
 - Digit from 0 to 7
-  - `[0-7]` -> `['0-7']`
+  - `[0-7]` -> `[0-7]`
 
 # Standards
 What is the recommended way to write abnexes
