@@ -21,6 +21,8 @@ This is a Python library but the abnex syntax could be ported to other languages
     [w "."]1++
   }
   ```
+  ## A more advanced pattern:
+  `{{{[a-z '_']1++} {[a-z 0-9 '_-.']0++}} '@' {{[a-z 0-9]1++} '.' {[a-z 0-9]1++} {[a-z 0-9 '-_.']0++}} {[a-z 0-9]1++}}`.
 
 # Why is Abnex Better?
 - It's easier to read, write and understand.
